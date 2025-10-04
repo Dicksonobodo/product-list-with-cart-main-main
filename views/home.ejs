@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Ordering - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body.home-body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff7b00, #ffb84d);
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .home-container {
+      animation: fadeIn 2s ease;
+    }
+
+    .home-title {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: slideDown 1.5s ease;
+    }
+
+    .home-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease 0.5s both;
+    }
+
+    .home-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .home-btn {
+      text-decoration: none;
+      padding: 12px 25px;
+      background: #fff;
+      color: #ff7b00;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .home-btn:hover {
+      background: #ff7b00;
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+       @media (max-width: 600px) {
+      .home-title {
+        font-size: 2rem;
+      }
+
+      .home-subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      .home-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .home-btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+        font-size: 0.95rem;
+        padding: 10px 20px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="home-body">
+  <div class="home-container">
+    <h1 class="home-title">Welcome to Food Ordering</h1>
+    <p class="home-subtitle">Delicious meals delivered to your door 🍔🍕🍜</p>
+    <div class="home-buttons">
+      <a href="/login" class="home-btn">Login</a>
+      <a href="/register" class="home-btn">Register</a>
+    </div>
+  </div>
+</body>
+</html>

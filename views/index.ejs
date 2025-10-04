@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/index.css">
+  
+  <title>Frontend Mentor | Product list with cart</title>
+
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <h1 style="font-size: xx-large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-transform: capitalize; color: rgb(196, 78, 35);">SCHOLASTICA DESSERTS</h1>
+  <div class="cart-body">
+    <div class="product-list">
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-waffle-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('waffle', '6.50')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>Waffle</h2>
+        <p>waffle with berries</p>
+        <h3>$6.50</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-creme-brulee-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('cream brulle', '7.00')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>cream brulle</h2>
+        <p>Vanilla Bean Crème Brûlée</p>
+        <h3>$7.00</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-meringue-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('Macaron', '8.00')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>Macaron</h2>
+        <p>Macaron mix of five</p>
+        <h3>$8.00</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-tiramisu-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('Tiramisu', '5.50')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>Tiramisu</h2>
+        <p>Classic Tiramisu</p>
+        <h3>$5.50</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-panna-cotta-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('Pistachio', '4.00')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>Pistachio</h2>
+        <p>Pistachio Baklava</p>
+        <h3>$4.00</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-meringue-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('pie', '5.00')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>pie</h2>
+        <p>Lemon Meringue Pie</p>
+        <h3>$5.00</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-waffle-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('cake', '4.50')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>Cake</h2>
+        <p>Red Velvet Cake</p>
+        <h3>$4.50</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-meringue-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('Brownie', '5.50')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>Brownie</h2>
+        <p>Salted Caramel Brownie</p>
+        <h3>$5.50</h3>
+      </div>
+      <div class="product">
+        <div class="img-container">
+          <img src="/image/image-panna-cotta-desktop.jpg" alt="">
+          <button class="btn" onclick="addToCart('Panna Cotta', '6.50')"><i class="fas fa-shopping-cart"></i>   Add to Cart</button>
+        </div>
+        <h2>Panna Cotta</h2>
+        <p>Vanilla Panna Cotta</p>
+        <h3>$6.50</h3>
+      </div>
+    </div>
+
+    <div class="cart">
+      <h2>Shopping Cart</h2>
+      <ul id="cart-items"></ul>
+      <p>Total: <span id="total-price">0</span></p>
+      <button class="cart-btn" style="margin-top: 30px;" onclick="showConfirmModal()" id="confirm-order">Confirm Order</button>
+    </div>
+  </div>
+  
+  <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal" id="confirm-modal">
+      <img src="/image/icon-order-confirmed.svg" alt="">
+        <h3>Confirmed Order ✅</h3>
+        <p>We hope you enjoy your food</p>
+        <div id="order-summary" class="order-summary"></div>
+        <p style="margin-top: 20px;" id="modal-total-price" ><strong>Total:</strong> $0.00</p>
+        <button onclick="closeModal()">start new order</button>
+    </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">OBODODICKSON</a>.
+  </div>
+
+  <script src="/index.js"></script>
+</body>
+</html>
