@@ -26,6 +26,11 @@ const db = new pg.Client({
 });
 db.connect();
 
+app.get("/", (req, res) => {
+  res.render("home.ejs");
+});
+
+
 // ===== REGISTER =====
 app.get("/register", (req, res) => {
   res.render("register.ejs");
