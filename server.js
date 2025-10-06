@@ -23,8 +23,13 @@ const db = new pg.Client({
   database: "foodshop",
   password: process.env.DB_PASSWORD,
   port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 db.connect();
+   
 
 app.get("/", (req, res) => {
   res.render("home.ejs");
