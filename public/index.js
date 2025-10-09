@@ -10,7 +10,7 @@ function addToCart(productName, price,) {
         cart.push({ name: productName, price: price, quantity: 1}); 
     }
 
-    updateCart();
+    updateCart(); 
 }
 
 function updateCart() {
