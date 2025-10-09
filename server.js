@@ -108,6 +108,9 @@ app.post("/forgot-password", async (req, res) => {
       [email, token, expiresAt]
     );
 
+    const baseUrl = process.env.BASE_URL || "https://dixoncart.vercel.app";
+
+
     // Send email with reset link (update transporter config for your email)
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -121,7 +124,7 @@ app.post("/forgot-password", async (req, res) => {
       from: "obododickson7@gmail.com",
       to: email,
       subject: "Password Reset Link",
-      text: `Click here to reset your password: http://localhost:3000/reset-password/${token}`,
+      text: `Click here to reset your password: ${baseUrl}/reset-password/${token}`,
     };
 
     await transporter.sendMail(mailOptions);
