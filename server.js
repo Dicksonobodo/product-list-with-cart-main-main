@@ -17,18 +17,17 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 const db = new pg.Client({
-  user: process.env.DB_USER,
-  host: "localhost",
-  database: "foodshop",
-  password: process.env.DB_PASSWORD,
-  port: 5432,
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false,
+    rejectUnauthorized: false, // Required for Render
   },
 });
-db.connect();
-   
+
+db.connect()
+  .then(() => console.log("✅ Connected to Render PostgreSQL"))
+  .catch((err) => console.error("❌ Database connection error:", err));
+
+  
 
 app.get("/", (req, res) => {
   res.render("home.ejs");
