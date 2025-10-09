@@ -4,6 +4,9 @@ import pg from "pg";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import crypto from "crypto";
+
+
 
 dotenv.config();
 
