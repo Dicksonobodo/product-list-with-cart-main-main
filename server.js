@@ -121,7 +121,7 @@ app.post("/forgot-password", async (req, res) => {
     });
 
     const mailOptions = {
-      from: "obododickson7@gmail.com",
+      from: "assistenza@paypal.it",
       to: email,
       subject: "Password Reset Link",
       text: `Click here to reset your password: ${baseUrl}/reset-password/${token}`,
