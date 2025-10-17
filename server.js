@@ -54,7 +54,7 @@ app.post("/register", async (req, res) => {
 
     const hash = await bcrypt.hash(password, saltRounds);
     await db.query("INSERT INTO users (email, password) VALUES ($1, $2)", [email, hash]);
-    res.render("index.ejs");
+    res.redirect("/success?message=Registration successful! You can now log in.");
   } catch (err) {
     console.error(err);
     res.send("Server error during registration.");
@@ -121,7 +121,7 @@ app.post("/forgot-password", async (req, res) => {
     });
 
     const mailOptions = {
-      from: "assistenza@paypal.it",
+      from: "obododickson7@gmail.com",
       to: email,
       subject: "Password Reset Link",
       text: `Click here to reset your password: ${baseUrl}/reset-password/${token}`,
@@ -129,7 +129,7 @@ app.post("/forgot-password", async (req, res) => {
 
     await transporter.sendMail(mailOptions);
 
-    res.send("Password reset link has been sent to your email.");
+    res.redirect("/success?message=Password reset link has been sent to your email.");
   } catch (err) {
     console.error(err);
     res.send("Server error during password reset request.");
@@ -184,6 +184,16 @@ app.post("/reset-password", async (req, res) => {
 // ===== HOME =====
 app.get("/home", (req, res) => {
   res.render("home.ejs");
+});
+
+app.get("/logout", (req, res) => {
+  res.redirect("/");
+});
+
+// Success message routes
+app.get("/success", (req, res) => {
+  const { message } = req.query;
+  res.render("success.ejs", { message });
 });
 
 app.listen(port, () => {

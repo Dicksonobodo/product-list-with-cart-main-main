@@ -18,21 +18,44 @@ function updateCart() {
     const totalPrice = document.getElementById('total-price');
     cartItems.innerHTML = "";
     
-
     let total = 0;
     cart.forEach((item, index) => {
         let itemTotal = item.price * item.quantity;
         total += itemTotal;
 
         const li = document.createElement('li');
-        li.textContent = `${item.name} (x${item.quantity}) - $${itemTotal.toFixed(2)}`;
-
-        const removeBtn = document.createElement('span');
-        removeBtn.textContent = " x";
-        removeBtn.style.marginLeft = "10px";
-        removeBtn.style.cursor = "pointer";
+        li.classList.add('cart-item');
+        
+        const itemInfo = document.createElement('div');
+        itemInfo.classList.add('item-info');
+        itemInfo.textContent = `${item.name} - $${itemTotal.toFixed(2)}`;
+        
+        const quantityControls = document.createElement('div');
+        quantityControls.classList.add('quantity-controls');
+        
+        const decrementBtn = document.createElement('button');
+        decrementBtn.textContent = "-";
+        decrementBtn.onclick = () => updateQuantity(index, -1);
+        
+        const quantitySpan = document.createElement('span');
+        quantitySpan.textContent = item.quantity;
+        quantitySpan.classList.add('quantity');
+        
+        const incrementBtn = document.createElement('button');
+        incrementBtn.textContent = "+";
+        incrementBtn.onclick = () => updateQuantity(index, 1);
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+        removeBtn.classList.add('remove-btn');
         removeBtn.onclick = () => removeFromCart(index);
 
+        quantityControls.appendChild(decrementBtn);
+        quantityControls.appendChild(quantitySpan);
+        quantityControls.appendChild(incrementBtn);
+        
+        li.appendChild(itemInfo);
+        li.appendChild(quantityControls);
         li.appendChild(removeBtn);
         cartItems.appendChild(li);
     });
@@ -50,9 +73,16 @@ function clearCart() {
     cart = [];
     updateCart();
 }
-function clearCart() {
-    cart = [];
-    updateCart();
+
+function updateQuantity(index, change) {
+    if (cart[index]) {
+        cart[index].quantity += change;
+        if (cart[index].quantity <= 0) {
+            removeFromCart(index);
+        } else {
+            updateCart();
+        }
+    }
 }
 
 function showConfirmModal() {
